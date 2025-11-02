@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L2Exile - Servidor PvP</title>
+
+  <!-- Fuente Aaron -->
+  <style>
+    @font-face {
+      font-family: 'Aaron';
+      src: url('fonts/aaron.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Menú PvP con íconos -->
+  <nav class="menu-pvp" aria-label="Menú principal">
+    <ul>
+      <li><a href="#features"><img src="img/icon-features.png" alt="Icono Features" /> Features</a></li>
+      <li><a href="#rates"><img src="img/icon-rates.png" alt="Icono Rates" /> Rates</a></li>
+      <li><a href="#descargas"><img src="img/icon-download.png" alt="Icono Descargas" /> Descargas</a></li>
+      <li><a href="#howtoplay"><img src="img/icon-howtoplay.png" alt="Icono Cómo jugar" /> Cómo jugar</a></li>
+      <li><a href="#eventospvp"><img src="img/icon-events.png" alt="Icono Eventos PvP" /> Eventos PvP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero principal con fondo medieval -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="fog-overlay"></div>
+    <div class="hero-content">
+      <img src="img/logo-exile.png" alt="Logo L2Exile" class="logo" />
+      <h1 class="title">L2Exile - El Destierro Comienza</h1>
+      <p class="subtitle">Servidor PvP High Five - Apertura: <span id="countdown"></span></p>
+      <div class="status-box">
+        <span class="status online">🟢 Online</span>
+        <span class="status players">👥 128 jugadores</span>
+      </div>
+      <a href="registro.html" class="btn-register">¡Regístrate ahora!</a>
+    </div>
+  </header>
+
+  <!-- Sección Features -->
+  <section class="features" id="features">
+    <h2>Características del servidor</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <img src="img/icon-buffs.png" alt="Buffs automáticos" />
+        <h3>Buffs automáticos</h3>
+        <p>Accede a todos los buffs desde el NPC global sin complicaciones.</p>
+      </div>
+      <div class="feature-item">
+        <img src="img/icon-events.png" alt="Eventos PvP" />
+        <h3>Eventos PvP</h3>
+        <p>Participa en batallas masivas con recompensas únicas.</p>
+      </div>
+      <div class="feature-item">
+        <img src="img/icon-shop.png" alt="Shop custom" />
+        <h3>Shop custom</h3>
+        <p>Compra ítems especiales con monedas PvP y eventos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script del contador -->
+  <script>
+    const countdown = document.getElementById("countdown");
+    const launchDate = new Date("2025-11-15T18:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "¡Ya comenzó!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+      // 👇 Aquí va tu efecto scroll para el menú
+  window.addEventListener('scroll', () => {
+    document.querySelector('.menu-pvp').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  </script>
+<script src="js/main.js"></script>
+</body>
+</html>
